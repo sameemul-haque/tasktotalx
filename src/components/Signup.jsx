@@ -6,9 +6,9 @@ import { collection, addDoc } from "firebase/firestore";
 import { db } from '../services/firebase';
 import signupimage from '../assets/signup-image.png';
 
-const Signup = () => {
-  // const phoneNumber = useSelector((state) => state.otp.phoneNumber);
-  const phoneNumber = "7878787878";
+const Signup = ({ onSuccess }) => {
+  const phoneNumber = useSelector((state) => state.otp.phoneNumber);
+  // const phoneNumber = "7878787878";
   const dispatch = useDispatch();
 
   const formik = useFormik({
@@ -34,6 +34,7 @@ const Signup = () => {
           phone: values.phone,
         });
         console.log("Document written with ID: ", docRef.id);
+        onSuccess(); 
       } catch (error) {
         console.error("Error adding document: ", error);
         setErrors({ submit: error.message });
