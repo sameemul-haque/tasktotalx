@@ -4,6 +4,7 @@ import Login from "./components/Login";
 import Verify from "./components/Verify";
 import Success from "./components/Success";
 import Toast from "./components/Toast";
+import Signup from "./components/Signup";
 
 const App = () => {
   const { showComp, success } = useSelector((state) => state.otp);
@@ -11,14 +12,14 @@ const App = () => {
 
   return (
     <div>
-      <div className="otp-container">
-        {showComp && !isVerified ? (
+      <div>
+        {/* {showComp && !isVerified ? (
           <Login />
         ) : !showComp && !success ? (
           <Verify onClick={() => setIsVerified(true)} />
-        ) : (
-          <Success />
-        )}
+        ) : ( */}
+          <Signup />
+        {/* )} */}
       </div>
 
       <Toast />

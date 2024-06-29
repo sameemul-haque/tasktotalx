@@ -8,20 +8,20 @@ body {
   background-color: #ffffff;
 }
 
-
 .main-container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   height: 100vh;
   gap: 10vh;
+  margin: 0 10rem;
 }
 
 .login-container {
   display: flex;
   flex-direction: column;
-  width: 25rem;
+  width: 50%;
 }
 
 .login-container h1,
@@ -80,12 +80,20 @@ body {
   border-color: rgb(150, 150, 200);
 }
 
+.firstName,
+.lastName {
+  width: 50%;
+  margin-bottom: 0;
+}
+
 #signup-btn,
-#verify-btn {
+#verify-btn,
+#create-btn {
   all: unset;
   background-color: none;
   border: none;
   color: white;
+  font-weight: bold;
 }
 
 .phone-btn {
@@ -110,12 +118,21 @@ body {
   text-align: center;
 }
 
-.otp-details{
+.already-have-an-account {
+  text-align: center;
+}
+
+.otp-details,
+.name-container,
+.tc-container {
   display: flex;
   flex-direction: row;
   gap: 5px;
 }
 
+.tc-container {
+  margin-top: 2rem;
+}
 
 .red-text {
   color: #FF8682;

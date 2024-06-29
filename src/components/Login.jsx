@@ -74,7 +74,7 @@ const Login = () => {
           <div className="inputGroup">
             <input type="phone" required autocomplete="off" value={phone}
               onChange={(e) => setPhone(e.target.value)} />
-            <label for="name">Enter Mobile Number</label>
+            <label for="phnumber">Enter Mobile Number</label>
           </div>
           <div className="phone-btn">
             <button

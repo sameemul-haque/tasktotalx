@@ -121,7 +121,7 @@ const Verify = () => {
               disabled={false}
               autoFocus
               onChange={(e) => setOtp(e.target.value)} />
-            <label for="name">Enter code</label>
+            <label for="otpcode">Enter code</label>
           </div>
 
           <div className="otp-details">
