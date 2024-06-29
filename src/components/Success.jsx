@@ -1,15 +1,27 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { auth } from "../services/firebase";
+import { removeUser, changeStateTrue } from '../feature/otpSlice';
 
 const Success = () => {
   const phoneNumber = useSelector((state) => state.otp.phoneNumber);
-  function refresh() {
-    window.location.reload();
-  }
+  const dispatch = useDispatch();
+
+  const handleLogout = async () => {
+    try {
+      await auth.signOut();
+      dispatch(removeUser());
+      dispatch(changeStateTrue());
+      console.log("Logged out successfully");
+    } catch (error) {
+      console.error("Error logging out:", error);
+    }
+  };
+
   return (
     <div className='success-container'>
       <h1>{phoneNumber}</h1>
-      <div className="phone-btn" onClick={refresh}>
+      <div className="phone-btn" onClick={handleLogout}>
         <button id="logout-btn">
           Logout
         </button>

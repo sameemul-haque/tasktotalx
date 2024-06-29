@@ -6,7 +6,8 @@ import Success from "./components/Success";
 import Toast from "./components/Toast";
 import Signup from "./components/Signup";
 import { collection, query, where, getDocs } from "firebase/firestore";
-import { db } from "./services/firebase";
+import { db, auth} from "./services/firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
 const App = () => {
   const { showComp, success, phoneNumber } = useSelector((state) => state.otp);
@@ -14,23 +15,28 @@ const App = () => {
   const [isNewUser, setIsNewUser] = useState(false);
 
   console.log("Checking if phone number exists:", phoneNumber);
+
   useEffect(() => {
     const checkPhoneNumberExists = async () => {
       if (phoneNumber) {
-        const q = query(
-          collection(db, "users"),
-          where("phone", "==", phoneNumber)
-        );
+        const q = query(collection(db, "users"), where("phone", "==", phoneNumber));
         const querySnapshot = await getDocs(q);
         console.log("Query snapshot:", querySnapshot.docs);
         setIsNewUser(querySnapshot.empty);
       }
     };
 
-    if (setIsVerified) {
-      checkPhoneNumberExists();
-    }
-  }, [phoneNumber, isVerified]);
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setIsVerified(true); 
+        checkPhoneNumberExists();
+      } else {
+        setIsVerified(false);
+      }
+    });
+
+    return () => unsubscribe();
+  }, [phoneNumber]);
 
   const handleSignupSuccess = () => {
     setIsNewUser(false);
@@ -44,10 +50,13 @@ const App = () => {
         ) : !showComp && !success ? (
           <Verify onClick={() => setIsVerified(true)} />
         ) : (
-          isNewUser ? <Signup onSuccess={handleSignupSuccess} /> : <Success />
+          isNewUser ? (
+            <Signup onSuccess={handleSignupSuccess} />
+          ) : (
+            <Success />
+          )
         )}
       </div>
-
       <Toast />
     </div>
   );

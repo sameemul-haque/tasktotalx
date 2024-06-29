@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initalState = {
+const initialState = {
   showComp: true,
   user: null,
   success: false,
@@ -9,7 +9,7 @@ const initalState = {
 
 const otpSlice = createSlice({
   name: "otp",
-  initialState: initalState,
+  initialState,
   reducers: {
     changeStateTrue: (state) => {
       state.showComp = true;
@@ -17,18 +17,18 @@ const otpSlice = createSlice({
     changeStateFalse: (state) => {
       state.showComp = false;
     },
-
     addUser: (state, action) => {
       state.user = action.payload;
     },
     removeUser: (state) => {
       state.user = null;
+      state.success = false;
+      state.phoneNumber = null;
+      state.showComp = true;
     },
-
     successTrue: (state) => {
       state.success = true;
     },
-
     addPhoneNumber: (state, action) => {
       state.phoneNumber = action.payload;
     },
