@@ -85,7 +85,7 @@ const Login = () => {
               <span>{isButtonDisabled ? "Sending..." : "GET OTP"}</span>
             </button>
           </div>
-          <p className="dont-have-an-account">Dont have an account? <span className="sign-up-text">Sign up</span></p>
+          <p className="dont-have-an-account">Dont have an account? <span className="red-text">Sign up</span></p>
         </div>
 
         <div>

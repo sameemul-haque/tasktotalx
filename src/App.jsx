@@ -12,13 +12,13 @@ const App = () => {
   return (
     <div>
       <div className="otp-container">
-        {/* {showComp && !isVerified ? (
+        {showComp && !isVerified ? (
           <Login />
-        ) : !showComp && !success ? ( */}
+        ) : !showComp && !success ? (
           <Verify onClick={() => setIsVerified(true)} />
-        {/* ) : (
+        ) : (
           <Success />
-        )} */}
+        )}
       </div>
 
       <Toast />

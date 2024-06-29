@@ -30,7 +30,7 @@ body {
   text-shadow: 1px 1px 2px #00000031;
 }
 
-.login-container h5{
+.login-container h5 {
   margin-top: 1rem;
   margin-bottom: 1rem;
   font-weight: normal;
@@ -80,7 +80,8 @@ body {
   border-color: rgb(150, 150, 200);
 }
 
-#signup-btn, #verify-btn {
+#signup-btn,
+#verify-btn {
   all: unset;
   background-color: none;
   border: none;
@@ -103,13 +104,32 @@ body {
   width: 20rem;
 }
 
-.dont-have-an-account{
+.dont-have-an-account {
   margin-top: 1rem;
   font-weight: bold;
   text-align: center;
 }
 
+.otp-details{
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
 
-.sign-up-text{
+
+.red-text {
   color: #FF8682;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

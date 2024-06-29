@@ -7,9 +7,9 @@ import {
   successTrue,
 } from "../feature/otpSlice";
 import toast from "react-hot-toast";
-import OtpInput from "otp-input-react";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { auth } from "../services/firebase";
+import loginimage from "../assets/login-image.png";
 
 const Verify = () => {
   const dispatch = useDispatch();
@@ -107,26 +107,26 @@ const Verify = () => {
 
   return (
     <div>
-      <div className="phone-container">
-        <div className="phone-title">Enter your OTP</div>
-        <div className="phone-subcontainer extra">
-          <div className="phone-filed-otp">
-            <div>
-              <OtpInput
-                value={otp}
-                onChange={setOtp}
-                OTPLength={6}
-                otpType="number"
-                disabled={false}
-                autoFocus
-              />
-            </div>
+      <div className="main-container">
+
+        <div className="login-container">
+          <h1>Verify code</h1>
+          <h5>An authentication code has been sent to your email.</h5>
+          <div className="inputGroup">
+            <input
+              type="number"
+              required
+              autocomplete="off"
+              value={otp}
+              disabled={false}
+              autoFocus
+              onChange={(e) => setOtp(e.target.value)} />
+            <label for="name">Enter code</label>
           </div>
 
           <div className="otp-details">
-            <button onClick={() => resendOTP()} disabled={otpTime > 0}>
-              <span>{isButtonDisabled ? "Sending..." : "resend"}</span>
-            </button>
+            <p>Didn't receive a code?</p>
+            <span className="red-text" onClick={() => resendOTP()}>{isButtonDisabled ? "Sending..." : "Resend"}</span>
           </div>
 
           <div className="phone-btn">
@@ -135,12 +135,12 @@ const Verify = () => {
               id="verify-btn"
               disabled={isVerifyButtonDisabled}
             >
-              {isVerifyButtonDisabled ? "Checking..." : "Verify OTP"}
+              {isVerifyButtonDisabled ? "Checking..." : "Verify"}
             </button>
           </div>
-          <div className="timer">
-            {otpTime > 0 && <div>{otpTime} seconds remaining</div>}
-          </div>
+        </div>
+        <div>
+          <img src={loginimage} alt="login image" className="login-image" />
         </div>
       </div>
       <div id="recaptcha"></div>
