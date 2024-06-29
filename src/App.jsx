@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { useState } from "react";
-import Send from "./components/Send";
+import Login from "./components/Login";
 import Verify from "./components/Verify";
 import Success from "./components/Success";
 import Toast from "./components/Toast";
@@ -12,13 +12,13 @@ const App = () => {
   return (
     <div>
       <div className="otp-container">
-        {showComp && !isVerified ? (
-          <Send />
-        ) : !showComp && !success ? (
+        {/* {showComp && !isVerified ? (
+          <Login />
+        ) : !showComp && !success ? ( */}
           <Verify onClick={() => setIsVerified(true)} />
-        ) : (
+        {/* ) : (
           <Success />
-        )}
+        )} */}
       </div>
 
       <Toast />

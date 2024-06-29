@@ -5,134 +5,111 @@
 }
 
 body {
-  background-color: slategrey;
+  background-color: #ffffff;
 }
 
-.topbar {
-  background-color: rgb(38, 38, 54);
-  height: 10vh;
-  font-size: 24px;
-  letter-spacing: 1.8px;
+
+.main-container {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  color: white;
+  height: 100vh;
+  gap: 10vh;
 }
 
-.otp-container {
-  display: flex;
-  justify-content: center;
-  padding-top: 15vh;
-}
-
-.phone-container {
-  width: 400px;
-}
-
-.phone-title {
-  font-size: 20px;
-  color: white;
-  background-color: rgb(38, 38, 54);
-  text-align: center;
-  padding: 15px;
-}
-
-.phone-subcontainer {
-  background-color: white;
-  height: 120px;
-  width: 100%;
+.login-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  width: 25rem;
 }
 
-.extra {
-  height: 150px;
+.login-container h1,
+.login-container h5 {
+  color: #313131;
+  text-shadow: 1px 1px 2px #00000031;
 }
 
-.phone-filed .mobile {
-  font-size: 14px;
+.login-container h5{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-weight: normal;
 }
 
-.phone-filed {
-  padding-bottom: 10px;
+.login-container * {
+  box-sizing: border-box;
 }
 
-.phone-filed-otp {
-  padding-bottom: 2px;
+.inputGroup {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 1em 0 1em 0;
+  width: 100%;
+  position: relative;
+}
+
+.inputGroup input {
+  font-size: 100%;
+  padding: 0.8em;
+  outline: none;
+  border: 2px solid #79747E;
+  background-color: transparent;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.inputGroup label {
+  font-size: 100%;
+  position: absolute;
+  left: 0;
+  padding: 0.8em;
+  margin-left: 0.5em;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  color: #1C1B1F;
+}
+
+.inputGroup :is(input:focus, input:valid)~label {
+  transform: translateY(-50%) scale(.9);
+  margin: 0em;
+  margin-left: 0.5em;
+  padding: 0.4em;
+  background-color: #ffffff;
+}
+
+.inputGroup :is(input:focus, input:valid) {
+  border-color: rgb(150, 150, 200);
+}
+
+#signup-btn, #verify-btn {
+  all: unset;
+  background-color: none;
+  border: none;
+  color: white;
 }
 
 .phone-btn {
-  margin-top: 10px;
-}
-
-.phone-btn button {
-  border: none;
-  color: white;
-  background-color: rgb(38, 38, 54);
-  padding: 8px 20px;
-  border-radius: 3px;
-  font-size: 15px;
-}
-
-.phone-btn button:hover {
-  transition: 0.5s ease-in-out;
-  background-color: lightslategray;
-}
-
-button {
-  cursor: pointer;
-}
-
-button:disabled {
-  background-color: #888;
-  color: white;
-  transition: none;
-  cursor: none;
-}
-
-button:hover:disabled {
-  cursor: no-drop;
-  background-color: #888;
-}
-
-.otp-details {
-  margin-top: 5px;
-  width: 72%;
   display: flex;
-  justify-content: flex-end;
-}
-
-.otp-details button {
-  border: none;
-  padding: 2px;
-  background-color: transparent;
-}
-
-/* User */
-.user-container {
-  color: white;
-}
-
-.user-link {
-  text-align: center;
-  color: aqua;
-  text-decoration: underline;
+  justify-content: center;
+  border-radius: 4px;
+  padding: 0.8em;
+  background-color: #515DEF;
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   cursor: pointer;
 }
 
-#recaptcha-container {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  opacity: 0.4;
+.login-image {
+  width: 20rem;
 }
 
-.timer {
-  font-size: 15px;
-  font-weight: 400;
-  letter-spacing: 0.8px;
+.dont-have-an-account{
+  margin-top: 1rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+.sign-up-text{
+  color: #FF8682;
 }

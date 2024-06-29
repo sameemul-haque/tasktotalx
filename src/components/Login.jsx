@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
-import PhoneInput from "react-phone-input-2";
-import "react-phone-input-2/lib/style.css";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { auth } from "../services/firebase";
 import { useDispatch } from "react-redux";
 import { addPhoneNumber, addUser, changeStateFalse } from "../feature/otpSlice";
 import toast from "react-hot-toast";
+import loginimage from "../assets/login-image.png";
 
-const Send = () => {
+const Login = () => {
   const dispatch = useDispatch();
   const [phone, setPhone] = useState("");
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
@@ -35,9 +34,10 @@ const Send = () => {
 
     try {
       setIsButtonDisabled(true);
+      const formattedPhone = phone.startsWith("+") ? phone : "+91" + phone;
       const confirmation = await signInWithPhoneNumber(
         auth,
-        "+" + phone,
+        formattedPhone,
         recaptcha
       );
 
@@ -65,18 +65,16 @@ const Send = () => {
   };
 
   return (
-    <div>
-      <div className="phone-container">
-        <div className="phone-title">OTP Authentication</div>
-        <div className="phone-subcontainer">
-          <div className="phone-filed">
-            <PhoneInput
-              country={"in"}
-              value={phone}
-              onChange={setPhone}
-              placeholder="+91 xxxxx-xxxxx"
-              className="mobile"
-            />
+    <>
+      <div className="main-container">
+
+        <div className="login-container">
+          <h1>Login</h1>
+          <h5>Login to access your travelwise account</h5>
+          <div className="inputGroup">
+            <input type="phone" required autocomplete="off" value={phone}
+              onChange={(e) => setPhone(e.target.value)} />
+            <label for="name">Enter Mobile Number</label>
           </div>
           <div className="phone-btn">
             <button
@@ -84,15 +82,19 @@ const Send = () => {
               id="signup-btn"
               disabled={isButtonDisabled}
             >
-              <span>{isButtonDisabled ? "Sending..." : "Send SMS"}</span>
+              <span>{isButtonDisabled ? "Sending..." : "GET OTP"}</span>
             </button>
           </div>
+          <p className="dont-have-an-account">Dont have an account? <span className="sign-up-text">Sign up</span></p>
+        </div>
+
+        <div>
+          <img src={loginimage} alt="login image" className="login-image" />
         </div>
       </div>
-
       {showCaptcha && <div id="recaptcha"></div>}
-    </div>
+    </>
   );
 };
 
-export default Send;
+export default Login;
