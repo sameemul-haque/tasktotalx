@@ -116,12 +116,12 @@ const Verify = () => {
             <input
               type="number"
               required
-              autocomplete="off"
+              autoComplete="off"
               value={otp}
               disabled={false}
               autoFocus
               onChange={(e) => setOtp(e.target.value)} />
-            <label for="otpcode">Enter code</label>
+            <label htmlFor="otpcode">Enter code</label>
           </div>
 
           <div className="otp-details">

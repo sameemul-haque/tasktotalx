@@ -72,9 +72,9 @@ const Login = () => {
           <h1>Login</h1>
           <h5>Login to access your travelwise account</h5>
           <div className="inputGroup">
-            <input type="phone" required autocomplete="off" value={phone}
+            <input type="phone" required autoComplete="off" value={phone}
               onChange={(e) => setPhone(e.target.value)} />
-            <label for="phnumber">Enter Mobile Number</label>
+            <label htmlFor="phnumber">Enter Mobile Number</label>
           </div>
           <div className="phone-btn">
             <button
