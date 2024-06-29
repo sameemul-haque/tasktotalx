@@ -88,7 +88,8 @@ body {
 
 #signup-btn,
 #verify-btn,
-#create-btn {
+#create-btn,
+#logout-btn {
   all: unset;
   background-color: none;
   border: none;
@@ -138,6 +139,18 @@ body {
   color: #FF8682;
   font-weight: bold;
   cursor: pointer;
+}
+
+.success-container{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.success-container .phone-btn{
+  width: 25rem;
 }
 
 input::-webkit-outer-spin-button,

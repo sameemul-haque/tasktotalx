@@ -13,13 +13,13 @@ const App = () => {
   return (
     <div>
       <div>
-        {/* {showComp && !isVerified ? (
+        {showComp && !isVerified ? (
           <Login />
         ) : !showComp && !success ? (
           <Verify onClick={() => setIsVerified(true)} />
-        ) : ( */}
-          <Signup />
-        {/* )} */}
+        ) : (
+          <Success />
+        )}
       </div>
 
       <Toast />
