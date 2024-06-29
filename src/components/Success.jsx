@@ -9,8 +9,8 @@ const Success = () => {
   return (
     <div className='success-container'>
       <h1>{phoneNumber}</h1>
-      <div className="phone-btn">
-        <button onClick={refresh} id="logout-btn">
+      <div className="phone-btn" onClick={refresh}>
+        <button id="logout-btn">
           Logout
         </button>
       </div>

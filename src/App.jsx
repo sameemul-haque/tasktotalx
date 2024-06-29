@@ -11,8 +11,9 @@ import { db } from "./services/firebase";
 const App = () => {
   const { showComp, success, phoneNumber } = useSelector((state) => state.otp);
   const [isVerified, setIsVerified] = useState(false);
-  const [phoneNumberExists, setPhoneNumberExists] = useState(null);
+  const [isNewUser, setIsNewUser] = useState(false);
 
+  console.log("Checking if phone number exists:", phoneNumber);
   useEffect(() => {
     const checkPhoneNumberExists = async () => {
       if (phoneNumber) {
@@ -21,21 +22,18 @@ const App = () => {
           where("phone", "==", phoneNumber)
         );
         const querySnapshot = await getDocs(q);
-        setPhoneNumberExists(!querySnapshot.empty);
+        console.log("Query snapshot:", querySnapshot.docs);
+        setIsNewUser(querySnapshot.empty);
       }
     };
 
-    if (isVerified) {
+    if (setIsVerified) {
       checkPhoneNumberExists();
     }
   }, [phoneNumber, isVerified]);
 
-  const handleVerification = () => {
-    setIsVerified(true);
-  };
-
   const handleSignupSuccess = () => {
-    setPhoneNumberExists(true);
+    setIsNewUser(false);
   };
 
   return (
@@ -46,7 +44,7 @@ const App = () => {
         ) : !showComp && !success ? (
           <Verify onClick={() => setIsVerified(true)} />
         ) : (
-          phoneNumberExists ? <Success /> : <Signup onSuccess={handleSignupSuccess} />
+          isNewUser ? <Signup onSuccess={handleSignupSuccess} /> : <Success />
         )}
       </div>
 

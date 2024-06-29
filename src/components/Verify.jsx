@@ -129,9 +129,8 @@ const Verify = () => {
             <span className="red-text" onClick={() => resendOTP()}>{isButtonDisabled ? "Sending..." : "Resend"}</span>
           </div>
 
-          <div className="phone-btn">
+          <div className="phone-btn" onClick={() => verifyOTP()}>
             <button
-              onClick={() => verifyOTP()}
               id="verify-btn"
               disabled={isVerifyButtonDisabled}
             >

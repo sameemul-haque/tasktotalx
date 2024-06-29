@@ -76,9 +76,8 @@ const Login = () => {
               onChange={(e) => setPhone(e.target.value)} />
             <label htmlFor="phnumber">Enter Mobile Number</label>
           </div>
-          <div className="phone-btn">
+          <div className="phone-btn" onClick={() => sendOTP()}>
             <button
-              onClick={() => sendOTP()}
               id="signup-btn"
               disabled={isButtonDisabled}
             >
